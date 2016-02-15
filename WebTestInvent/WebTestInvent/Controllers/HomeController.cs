@@ -32,10 +32,24 @@ namespace WebTestInvent.Controllers
         }
 
 
-        public ActionResult ClientsInfo()
+        public ActionResult ClientsInfoAll()
         {
             SetData();
             return View(orderStringList);
+        }
+
+        public ActionResult ClientsInfo(int id)
+        {
+            List<Order_string> listOS = new List<Order_string>();
+            SetData();
+            foreach(Order_string os in orderStringList)
+            {
+                if(id == os.Order.Client.ID)
+                {
+                    listOS.Add(os);
+                }
+            }
+            return View(listOS);
         }
 
         private void SetData()

@@ -1,25 +1,16 @@
 ﻿@model IEnumerable<WebTestInvent.Order_string>
 
 @{
-    ViewBag.Title = "Clients information";
+    ViewBag.Title = "Clients Info All";
 }
 
-<h2>Clients information</h2>
+<h2>ClientsInfoAll</h2>
 
 <p>
-   @* @Html.ActionLink("Create New", "Create")*@
+    @*@Html.ActionLink("Create New", "Create")*@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Good)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Order)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Prise)
         </th>
@@ -34,15 +25,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <th>
-            @Html.DisplayFor(modelItem => item.ID)
-        </th>
-        <th>
-            @Html.DisplayFor(modelItem => item.Good.Name)
-        </th>
-        <th>
-            @Html.DisplayFor(modelItem => item.Order.Client.Name)
-        </th>
         <td>
             @Html.DisplayFor(modelItem => item.Prise)
         </td>

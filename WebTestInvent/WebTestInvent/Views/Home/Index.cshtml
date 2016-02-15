@@ -1,44 +1,9 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
     <title> </title>
-    <style type="text/css">
-        .webGrid {
-            margin: 4px;
-            border-collapse: collapse;
-            width: 500px;
-            background-color: #FCFCFC;
-        }
-
-        .header {
-            background-color: #C1D4E6;
-            font-weight: bold;
-            color: #FFF;
-        }
-
-        .webGrid th, .webGrid td {
-            border: 1px solid #C0C0C0;
-            padding: 5px;
-        }
-
-        .alt {
-            background-color: #FCFCFC;
-            color: #000;
-        }
-
-        .gridHead a:hover {
-            text-decoration: underline;
-        }
-
-        .description {
-            width: auto;
-        }
-
-        .select {
-            background-color: #E4E9F5;
-        }
-    </style>
 </head>
 
 <div class="Tables">
@@ -48,6 +13,8 @@
         var client = new Client();
         grid.Pager(WebGridPagerModes.NextPrevious);
     }
+    @Styles.Render("~/Content/text.css")
+
 
     <div id="gridContent">
         @grid.GetHtml(
@@ -57,7 +24,9 @@
                     selectedRowStyle: "select",
                     columns: grid.Columns(
                     grid.Column("Id", "Id"),
-                    grid.Column("Name", format: (item) => item.GetSelectLink(item.Name)),
+                    grid.Column("Name", format: @<text>@Html.ActionLink(
+                                                            (string)item.Name, "ClientsInfo", "Home",
+                                                            new { id = item.ID}, null)</text>),
                     grid.Column("Adress", "Adress"),
                     grid.Column("Sum", "Sum")
                 )
@@ -68,9 +37,10 @@
             {
                 client = context.Clients.Find(grid.SelectedRow[1]);
             }
-            <b>Id</b> @client.ID<br />
+            
+            @*<b>Id</b> @client.ID<br />
             <b>Name</b>  @client.Name<br />
-            <b>Aderess</b> @client.Adress<br />
+            <b>Aderess</b> @client.Adress<br />*@
         }
     </div>
 </div>
