@@ -31,7 +31,6 @@ namespace WebTestInvent.Controllers
             return View(query);
         }
 
-
         public ActionResult ClientsInfoAll()
         {
             SetData();
@@ -54,7 +53,14 @@ namespace WebTestInvent.Controllers
 
         private void SetData()
         {
+            if (context == null)
+            {
+                InitialData();
+            }
+        }
 
+        private void InitialData()
+        {
             int initPrise = 5;
             int initCount = 2;
             int[] prises;
@@ -194,7 +200,6 @@ namespace WebTestInvent.Controllers
             #endregion
 
             context.SaveChanges();
-
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    @Styles.Render("~/Content/text.css")
 }
 <head>
     <title> </title>
@@ -13,8 +14,6 @@
         var client = new Client();
         grid.Pager(WebGridPagerModes.NextPrevious);
     }
-    @Styles.Render("~/Content/text.css")
-
 
     <div id="gridContent">
         @grid.GetHtml(
@@ -31,16 +30,5 @@
                     grid.Column("Sum", "Sum")
                 )
          )
-        @if (grid.HasSelection)
-        {
-            using (MyModelDB context = new MyModelDB())
-            {
-                client = context.Clients.Find(grid.SelectedRow[1]);
-            }
-            
-            @*<b>Id</b> @client.ID<br />
-            <b>Name</b>  @client.Name<br />
-            <b>Aderess</b> @client.Adress<br />*@
-        }
     </div>
 </div>

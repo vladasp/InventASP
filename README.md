@@ -1,2 +1,2 @@
 # InventASP
-ASP.NET NVC Test project
+ASP.NET MVC Test project
